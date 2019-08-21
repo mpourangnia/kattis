@@ -1,0 +1,19 @@
+import java.util.*;
+import java.io.*;
+
+public class QLAY {
+    public static void main(String args[]) throws Exception {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
+        StringTokenizer stLine = new StringTokenizer(in.readLine());
+        
+        int n = Integer.parseInt(stLine.nextToken());
+        double quality = 0;
+        for(int i = 0; i < n; i++) {
+            stLine = new StringTokenizer(in.readLine());
+            quality += Double.parseDouble(stLine.nextToken()) * Double.parseDouble(stLine.nextToken());
+        }
+        out.println(String.format("%.3f", quality));
+        out.close();
+    }
+}

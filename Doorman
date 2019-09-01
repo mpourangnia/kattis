@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Doorman {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int limit = Integer.valueOf(st.nextToken());
+        st = new StringTokenizer(br.readLine());
+        String input = st.nextToken();
+
+        System.out.println(getTotalInclub(input, limit));
+    }
+
+    private static int getTotalInclub(String queue, int limit) {
+
+        int men = 0;
+        int women = 0;
+
+        char[] folket = queue.toCharArray();
+
+        for (int i = 0; i < folket.length; i++) {
+            if (folket[i] == 'M') {
+
+                if (Math.abs(men + 1 - women) > limit) {
+                    if (i != folket.length - 1 && folket[i + 1] == 'W') {
+                        women++;
+                        folket[i + 1] = 'M';
+                    } else break;
+               
+                } else men++;
+            }
+
+            if (folket[i] == 'W') {
+
+                if (Math.abs(women + 1 - men) > limit) {
+                    if (i != folket.length - 1 && folket[i + 1] == 'M') {
+                        men++;
+                        folket[i + 1] = 'W';
+                    } else break;
+                } else women++;
+            }
+        }
+
+        return women + men;
+    }
+}

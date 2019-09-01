@@ -1,0 +1,61 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Trick {
+
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = br.readLine();
+        int place =1;
+        for (int i = 0; i < input.length(); i++) {
+            if (new Character('A').equals(input.charAt(i))) {
+                place = A(place);
+            }
+            if (new Character('B').equals(input.charAt(i))) {
+                place = B(place);
+            }
+            if (new Character('C').equals(input.charAt(i))) {
+                place = C(place);
+            }
+        }
+
+        System.out.println(place);
+
+    }
+
+    private static int A(int place) {
+        if (place == 1) {
+            return 2;
+        }
+        if (place == 2) {
+            return 1;
+        }
+
+        return place;
+    }
+
+    private static int B (int place) {
+        if (place == 2) {
+            return 3;
+        }
+        if (place == 3) {
+            return 2;
+        }
+
+        return place;
+    }
+
+    private static int C (int place) {
+        if (place == 1) {
+            return 3;
+        }
+        if (place == 3) {
+            return 1;
+        }
+
+        return place;
+    }
+}
